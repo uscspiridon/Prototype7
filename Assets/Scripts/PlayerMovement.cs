@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour {
@@ -11,6 +10,11 @@ public class PlayerMovement : MonoBehaviour {
     
     // public constants
     public float speed;
+    // public float diagonalInputRampTime;
+    
+    // state variables
+    private float xInput;
+    private float yInput;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -23,12 +27,44 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+        // // x input
+        // if (Input.GetAxisRaw("Horizontal") == 1) {
+        //     if (yInput == 0) xInput = 1;
+        //     if (xInput < 0) xInput = 0;
+        //     xInput += 1/diagonalInputRampTime * Time.deltaTime;
+        //     if (xInput > 1) xInput = 1;
+        // }
+        // else if (Input.GetAxisRaw("Horizontal") == -1) {
+        //     if (yInput == 0) xInput = -1;
+        //     if (xInput > 0) xInput = 0;
+        //     xInput -= 1/diagonalInputRampTime * Time.deltaTime;
+        //     if (xInput < -1) xInput = -1;
+        // }
+        // else xInput = 0;
+        // // y input
+        // if (Input.GetAxisRaw("Vertical") == 1) {
+        //     if (xInput == 0) yInput = 1;
+        //     if (yInput < 0) yInput = 0;
+        //     yInput += 1/diagonalInputRampTime * Time.deltaTime;
+        //     if (yInput > 1) yInput = 1;
+        // }
+        // else if (Input.GetAxisRaw("Vertical") == -1) {
+        //     if (xInput == 0) yInput = -1;
+        //     if (yInput > 0) yInput = 0;
+        //     yInput -= 1/diagonalInputRampTime * Time.deltaTime;
+        //     if (yInput < -1) yInput = -1;
+        // }
+        // else yInput = 0;
+        // Debug.Log("x: " + xInput + " y: " + yInput);
+
+        xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
     }
 
     private void FixedUpdate() {
-        rb.velocity = speed * Time.deltaTime * new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector2 direction = new Vector2(xInput, yInput);
+        direction.Normalize();
+        rb.velocity = speed * Time.deltaTime * direction;
     }
 }
