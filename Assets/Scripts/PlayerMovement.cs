@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour {
-    // component stuff
+    // necessary junk
     private Rigidbody2D rb;
+    public static PlayerMovement Instance;
     
     // public constants
     public float speed;
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     private float yInput;
 
     private void Awake() {
+        Instance = this;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -65,6 +68,15 @@ public class PlayerMovement : MonoBehaviour {
     private void FixedUpdate() {
         Vector2 direction = new Vector2(xInput, yInput);
         direction.Normalize();
-        rb.velocity = speed * Time.deltaTime * direction;
+        rb.velocity = speed * direction;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Enemy")) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (other.gameObject.CompareTag("Bullet")) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

@@ -1,6 +1,7 @@
 TODO
 
 urgent
+-make enemies rotate along xy axis to look at player
 -enemies that shoot bullets at player
 -trail renderer behind player that disappears/explodes once it connects to itself in a closed shape
 -if you encircle an enemy, enemy is destroyed
