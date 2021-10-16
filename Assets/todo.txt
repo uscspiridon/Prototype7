@@ -1,0 +1,10 @@
+TODO
+
+urgent
+-player movement (with smooth diagonal)
+-enemies that shoot bullets at player
+-trail renderer behind player that disappears/explodes once it connects to itself in a closed shape
+-if you encircle an enemy, enemy is destroyed
+
+non-urgent
+-hook up controller (i have a playstation controller but idk how to connect it to unity)
