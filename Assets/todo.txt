@@ -1,8 +1,8 @@
 TODO
 
 urgent
--make enemies rotate along xy axis to look at player
 -trail renderer behind player that disappears/explodes once it connects to itself in a closed shape
+		- wasn't able to get to the closed loop, but try looking at this: https://answers.unity.com/questions/1632739/detect-closed-loop-in-trailrenderer-and-get-gameob.html
 -if you encircle an enemy, enemy is destroyed
 
 non-urgent
