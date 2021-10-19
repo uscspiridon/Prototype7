@@ -4,6 +4,8 @@ urgent
 -trail renderer behind player that disappears/explodes once it connects to itself in a closed shape
 		- wasn't able to get to the closed loop, but try looking at this: https://answers.unity.com/questions/1632739/detect-closed-loop-in-trailrenderer-and-get-gameob.html
 -if you encircle an enemy, enemy is destroyed
+-add more waves of enemies
+-make winnable condition
 
 non-urgent
 -hook up controller (i have a playstation controller but idk how to connect it to unity)
