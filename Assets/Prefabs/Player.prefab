@@ -178,7 +178,7 @@ TrailRenderer:
   m_SortingLayerID: -2000086009
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Time: 3
+  m_Time: 6
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -280,5 +280,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trail: {fileID: 4165740667523184915}
   ColliderPrefab: {fileID: 5460438032694011416, guid: ceaf09b992cde9e439f066497ca771b0, type: 3}
-  followDistance: 1
   poolSize: 400
+  encircledArea: {fileID: 0}

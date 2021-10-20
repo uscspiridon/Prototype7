@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         if (other.gameObject.CompareTag("Bullet")) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
