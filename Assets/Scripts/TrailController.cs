@@ -54,10 +54,9 @@ public class TrailController : MonoBehaviour
                 break;
             }
         }
-        Vector3 
-        for (int i = startIndex; true; i++) {
-            
-        }
+        // for (int i = startIndex; true; i++) {
+        //     
+        // }
 
     }
 
