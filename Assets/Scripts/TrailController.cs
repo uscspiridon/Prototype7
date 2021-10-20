@@ -9,15 +9,16 @@ public class TrailController : MonoBehaviour
     public TrailRenderer trail; //the trail
     //public GameObject TrailFollower;
     public GameObject ColliderPrefab;
-    
+    public float followDistance = 1f;
 
     public int poolSize = 5;
     GameObject[] pool;
     float trailRenderTime;
+    GameObject player;
 
     void Start()
     {
-        trail = GetComponent<TrailRenderer>();
+        //trail = GetComponent<TrailRenderer>();
         trailRenderTime = trail.time;
         pool = new GameObject[poolSize];
         for (int i = 0; i < pool.Length; i++)
@@ -28,6 +29,11 @@ public class TrailController : MonoBehaviour
 
     void Update()
     {
+        if (!player)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
         if (!trail.isVisible)
         {
             for (int i = 0; i < pool.Length; i++)
@@ -41,6 +47,13 @@ public class TrailController : MonoBehaviour
             TrailCollission();
         }
 
+    }
+
+    void LateUpdate()
+    {
+        transform.position = player.transform.position - player.transform.forward * followDistance;
+        transform.LookAt(player.transform.position);
+        transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
     }
 
     void TrailCollission()
