@@ -7,7 +7,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     private Rigidbody2D rb;
 
-    //[HideInInspector] public Vector3 targetPos;
+    // [HideInInspector] public Vector3 targetPos;
     public float speed;
     public float despawnDistance;
 
@@ -18,6 +18,10 @@ public class Bullet : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         
+    }
+
+    public void DirectAtTarget(Vector3 targetPos) {
+        SetDirection(targetPos - transform.position);
     }
 
     public void SetDirection(Vector3 dir)

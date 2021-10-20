@@ -2,7 +2,6 @@ TODO
 
 urgent
 -make win condition
--mouse movement
 -game feel (screen shake?)
 
 how to?

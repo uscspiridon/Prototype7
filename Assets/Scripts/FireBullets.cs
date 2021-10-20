@@ -9,6 +9,7 @@ public class FireBullets : MonoBehaviour {
     public float reloadTime;
     public int bulletAmount = 5;
     public float startAngle = 0f, endAngle = 360f;
+    public bool targetPlayer;
     
     // state
     private float reloadTimer;
@@ -27,21 +28,26 @@ public class FireBullets : MonoBehaviour {
             float angleStep = (endAngle - startAngle) / bulletAmount;
             float angle = startAngle;
 
-            for (int i = 0; i < bulletAmount; i++)
-            {
-                float bullDirX = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180f);
-                float bullDirY = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180f);
-
-                Vector3 bullMoveVector = new Vector3(bullDirX, bullDirY, 0f);
-                Vector2 bullDir = (bullMoveVector - transform.position).normalized;
-
+            if (targetPlayer) {
                 Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
-                bullet.SetDirection(bullDir);
+                bullet.DirectAtTarget(PlayerMovement.Instance.transform.position);
+            }
+            else {
+                for (int i = 0; i < bulletAmount; i++)
+                {
+                    float bullDirX = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180f);
+                    float bullDirY = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180f);
 
-                angle += angleStep;
+                    Vector3 bullMoveVector = new Vector3(bullDirX, bullDirY, 0f);
+                    Vector2 bullDir = (bullMoveVector - transform.position).normalized;
+
+                    Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
+                    bullet.SetDirection(bullDir);
+
+                    angle += angleStep;
+                } 
             }
 
-            
             // reset reload timer
             reloadTimer = reloadTime;
         }

@@ -37,13 +37,16 @@ public class EncircledArea : MonoBehaviour {
     }
 
     public void DestroyEnemiesInside() {
-        activeTimer = 0.5f;
+        activeTimer = 0.4f;
+        StartCoroutine(CameraShake.Instance.Shake());
     }
 
     private void OnTriggerStay2D(Collider2D other) {
         if (activeTimer > 0) {
             Debug.Log("colliding with " + other.name);
-            if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Bullet")) Destroy(other.gameObject);    
+            if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Bullet")) {
+                Destroy(other.gameObject);
+            }    
         }
     }
 }
