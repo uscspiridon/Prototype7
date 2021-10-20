@@ -47,6 +47,24 @@ public class TrailController : MonoBehaviour
             TrailCollission();
         }
 
+        Vector3[] points = new Vector3[100];
+        trail.GetPositions(points);
+        Vector3 testPoint = points[points.Length - 1];
+        int startIndex = 0;
+        for (int i = 0; i < points.Length; i++) {
+            Debug.Log("i " + i + " , x = " + points[i].x + " y = " + points[i].y);
+            float distance = Vector3.Distance(testPoint, points[i]);
+            // closed loop detected
+            if (distance < trail.minVertexDistance) {
+                startIndex = i;
+                break;
+            }
+        }
+        Vector3 
+        for (int i = startIndex; true; i++) {
+            
+        }
+
     }
 
     void LateUpdate()
